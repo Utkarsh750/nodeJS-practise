@@ -5,13 +5,12 @@
 // // console.log("Value of add is", math.sub(2,3));
 // console.log("Value of add is", math);
 
-const { log } = require("console");
 const http = require("http");
 const fs = require("fs");
 
 const myServer = http.createServer((req, res) => {
   //   console.log(req.headers);
-  console.log(`${Date.now()}: ${req.url} New req recived\n`);
+  const log = `${Date.now()}: ${req.url} New req recived\n`;
   fs.appendFile("log.txt", log, (err, data) => {
     switch (req.url) {
       case "/":
