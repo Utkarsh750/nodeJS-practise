@@ -7,17 +7,21 @@
 
 const http = require("http");
 const fs = require("fs");
+const url = require("url");
 
 const myServer = http.createServer((req, res) => {
   //   console.log(req.headers);
   const log = `${Date.now()}: ${req.url} New req recived\n`;
+  const myUrl = url.parse(req.url);
+  // console.log(myUrl);
   fs.appendFile("log.txt", log, (err, data) => {
-    switch (req.url) {
+    switch (myUrl.pathname) {
       case "/":
         res.end("HomePage");
         break;
 
       case "/about":
+        const username = myUrl.query.username;
         res.end(" I am about page of Utkarsh Sharma");
         break;
 
