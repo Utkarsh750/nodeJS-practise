@@ -8,33 +8,21 @@
 const http = require("http");
 const fs = require("fs");
 const url = require("url");
+const express = require("express");
 
-const myServer = http.createServer((req, res) => {
-  //   console.log(req.headers);
-  const log = `${Date.now()}: ${req.url} New req recived\n`;
-  const myUrl = url.parse(req.url);
-  // console.log(myUrl);
-  fs.appendFile("log.txt", log, (err, data) => {
-    switch (myUrl.pathname) {
-      case "/":
-        res.end("HomePage");
-        break;
+const app = express();
 
-      case "/about":
-        const username = myUrl.query.username;
-        res.end(" I am about page of Utkarsh Sharma");
-        break;
-
-      case "/contact":
-        res.end("This is my contact megayt750@gmail.com");
-        break;
-
-      default:
-        res.end("404 not found");
-    }
-  });
+app.get("/", (req, res) => {
+  return res.send("Hello i am on Home Page");
 });
 
-myServer.listen(8000, () => {
-  console.log("Server started");
+app.get("/about", (req, res) => {
+  return res.send(`Hello ${req.query.name}`);
 });
+
+app.listen(8000, () => console.log("Server started"));
+// const myServer = http.createServer(app);
+
+// myServer.listen(8000, () => {
+//   console.log("Server started");
+// });
