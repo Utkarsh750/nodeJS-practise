@@ -1,11 +1,11 @@
 REST API = JSON
 
-GET /users = List all users
+GET /users = List all users --- DONE
 
-GET /users/1 = GET the user with ID 1
-GET /users/2 = GET the user with ID 2
+GET /users/1 = GET the user with ID 1 --- DONE
+GET /users/2 = GET the user with ID 2 --- DONE
 
-POST /users = Create New user
+POST /users = Create New user --- DONE
 
 PATCH /users/1 = Edit the user with ID 1
 

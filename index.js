@@ -2,7 +2,7 @@ const express = require("express");
 const users = require("./MOCK_DATA.json");
 const PORT = 8000;
 const app = express();
-
+const fs = require("fs");
 app.use(express.urlencoded({ extended: false }));
 app.get("/users", (req, res) => {
   const html = `
@@ -25,17 +25,29 @@ app
     return res.json(user);
   })
   .patch((req, res) => {
+    users.filter((user) => id === user.id);
     return res.json({ status: "Pending" });
   })
   .delete((req, res) => {
-    return res.json({ status: "Pending" });
+    const id = Number(req.params.id);
+
+    const index = users.findIndex((user) => user.id === id);
+    if (index !== -1) {
+      users.splice(index, 1);
+      return res.json({ status: "Success", message: "User deleted" });
+    } else {
+      return res.status(404).json({ status: "Error", message: "User not found" });
+    }
+    // return res.json({ status: "Pending" });
   });
 
 app.post("/api/users", (req, res) => {
   // Create new user
   const body = req.body;
-  console.log("Body", body);
-  return res.json({ status: "Pending" });
+  users.push({ ...body, id: users.length + 1 });
+  fs.writeFile("./MOCK_DATA.json", JSON.stringify(users), (err, data) => {
+    return res.json({ status: "Success", id: users.length });
+  });
 });
 
 // app.patch("/api/users/:id", (req, res) => {
