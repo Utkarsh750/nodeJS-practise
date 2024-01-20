@@ -14,6 +14,8 @@ app.get("/users", (req, res) => {
 });
 // Routes
 app.get("/api/users", (req, res) => {
+  // res.setHeader("myName", "Utkarsh Sharma");
+  console.log(req.headers);
   return res.json(users);
 });
 
@@ -36,7 +38,9 @@ app
       users.splice(index, 1);
       return res.json({ status: "Success", message: "User deleted" });
     } else {
-      return res.status(404).json({ status: "Error", message: "User not found" });
+      return res
+        .status(404)
+        .json({ status: "Error", message: "User not found" });
     }
     // return res.json({ status: "Pending" });
   });
