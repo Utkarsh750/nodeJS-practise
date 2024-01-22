@@ -3,7 +3,11 @@ const users = require("./MOCK_DATA.json");
 const PORT = 8000;
 const app = express();
 const fs = require("fs");
+const mongoose = require("mongoose");
+
 app.use(express.urlencoded({ extended: false }));
+
+
 app.get("/users", (req, res) => {
   const html = `
           <ul> 
