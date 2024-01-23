@@ -5,3 +5,23 @@
 1705436859392: /contact New req recived
 1705436908369: / New req recived
 1705436909403: /favicon.ico New req recived
+
+1706008408001:::ffff:127.0.0.1 GET: /api/users
+
+1706008502472:::ffff:127.0.0.1 POST: /api/users
+
+1706008523866:::ffff:127.0.0.1 GET: /api/users
+
+1706008582562:::ffff:127.0.0.1 POST: /api/users
+
+1706008589961:::ffff:127.0.0.1 GET: /api/users
+
+1706008654826:::1 GET: /
+
+1706008664266:::1 GET: /api/users
+
+1706008664480:::1 GET: /favicon.ico
+
+1706008674942:::1 GET: /users
+
+1706008680917:::1 GET: /api/users
